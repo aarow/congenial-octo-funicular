@@ -21,7 +21,7 @@ export default {
         this.getTemp();
     },
     methods: {
-        getTemp() {
+        async getTemp() {
             // set variables (there are no errors in these strings)
             const url = 'http://api.openweathermap.org/data/2.5/weather';
             const zipCode = '85226';
@@ -30,7 +30,7 @@ export default {
             const endpoint = `${url}?zip=${zipCode}&appid=${apiKey}&units=${units}`;
 
             // make api call
-            const response = axios.get(endpoint);
+            const response = await axios.get(endpoint);
 
             // display current temp on page
             this.currentTemp = response.data.main.temp;
